@@ -1,14 +1,14 @@
-function! uniformity#Uniform() abort
+﻿function! uniformity#Uniform() abort
     if exists('g:uniformity_bomb')
-        let &bomb = g:uniformity_bomb
+        call setbufvar('', '&bomb', g:uniformity_bomb)
     endif
 
     if exists('g:uniformity_fileencoding')
-        let &fileencoding = g:uniformity_fileencoding
+        call setbufvar('', '&fileencoding', g:uniformity_fileencoding)
     endif
 
     if exists('g:uniformity_fileformat')
-        let &fileformat = g:uniformity_fileformat
+        call setbufvar('', '&fileformat', g:uniformity_fileformat)
     endif
 
     if exists('g:uniformity_indent')
@@ -34,7 +34,7 @@ function! s:ReplaceBufIndent(indent)
         call setline(lnum, line)
     endfor
 
-    let &shiftwidth = target_length
+    call setbufvar('', '&shiftwidth', target_length)
 endfunction
 
 function! s:ReplaceLineIndent(line, buf_indent_length, target_indent)
