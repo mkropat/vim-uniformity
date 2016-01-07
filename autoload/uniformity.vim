@@ -1,4 +1,4 @@
-﻿function! uniformity#Uniform() abort
+function! uniformity#Uniform() abort
     if exists('g:uniformity_bomb')
         call setbufvar('', '&bomb', g:uniformity_bomb)
     endif
@@ -11,30 +11,23 @@
         call setbufvar('', '&fileformat', g:uniformity_fileformat)
     endif
 
-    if exists('g:uniformity_indent')
-        call s:ReplaceBufIndent(g:uniformity_indent)
-    endif
-
-    call s:StripTrailingWhitespace()
-endfunction
-
-function! s:ReplaceBufIndent(indent)
-    let buf_indent_length = &shiftwidth
-    let target_length = s:GetWhitespaceLength(a:indent)
-
-    if buf_indent_length == target_length
-        return
-    endif
+    let do_indent = exists('g:uniformity_indent') && strlen(g:uniformity_indent)
 
     for lnum in range(1, line('$'))
         let line = getline(lnum)
 
-        let line = s:ReplaceLineIndent(line, buf_indent_length, a:indent)
+        if do_indent
+            let line = s:ReplaceLineIndent(line, &shiftwidth, g:uniformity_indent)
+        endif
+
+        let line = s:StripTrailingWhitespace(line)
 
         call setline(lnum, line)
     endfor
 
-    call setbufvar('', '&shiftwidth', target_length)
+    if do_indent
+        call setbufvar('', '&shiftwidth', s:GetWhitespaceLength(g:uniformity_indent))
+    endif
 endfunction
 
 function! s:ReplaceLineIndent(line, buf_indent_length, target_indent)
@@ -48,12 +41,8 @@ function! s:ReplaceLineIndent(line, buf_indent_length, target_indent)
     return substitute(a:line, '^\s*', new_indent, '')
 endfunction
 
-function! s:StripTrailingWhitespace()
-    for lnum in range(1, line('$'))
-        let line = getline(lnum)
-        let line = substitute(line, '\s*$', '', '')
-        call setline(lnum, line)
-    endfor
+function! s:StripTrailingWhitespace(line)
+    return substitute(a:line, '\s*$', '', '')
 endfunction
 
 function! s:GetWhitespaceLength(whitespace)
