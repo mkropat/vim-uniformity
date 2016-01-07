@@ -12,6 +12,7 @@ function! uniformity#Uniform() abort
     endif
 
     let do_indent = exists('g:uniformity_indent') && strlen(g:uniformity_indent)
+    let do_trailing = exists('g:uniformity_strip_trailing_whitespace') && g:uniformity_strip_trailing_whitespace
 
     for lnum in range(1, line('$'))
         let line = getline(lnum)
@@ -20,7 +21,9 @@ function! uniformity#Uniform() abort
             let line = s:ReplaceLineIndent(line, &shiftwidth, g:uniformity_indent)
         endif
 
-        let line = s:StripTrailingWhitespace(line)
+        if do_trailing
+            let line = s:StripTrailingWhitespace(line)
+        endif
 
         call setline(lnum, line)
     endfor
