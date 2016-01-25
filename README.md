@@ -57,8 +57,8 @@ __uniformity.vim__ requires that the
 [__sleuth.vim__](https://github.com/tpope/vim-sleuth) plugin be installed.
 This is necessary because __uniformity.vim__ relies on the
 [`shiftwidth`](http://vimdoc.sourceforge.net/htmldoc/options.html#'shiftwidth')
-setting of the buffer to reflect what indentation the file has so it can know
-how to change each line.
+setting of the buffer to reflect the current indentation of the file so it can
+know how to change each line.
 
 #### Installation
 
@@ -172,3 +172,4 @@ functionality](https://github.com/mkropat/vim-uniformity/blob/master/autoload/un
 __uniformity.vim__ does not currently handle line-endings that are inconsistent
 *within a single file* any better than Vim does out of the box.  If there were
 interest in such functionality, I could see about building it in.
+
