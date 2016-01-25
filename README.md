@@ -93,7 +93,9 @@ let g:uniformity_fileformat = 'unix'
 ```
 
 Change each setting as desired.  You may omit any setting to have it not take
-effect.
+effect.  After you're satisfied, load in the settings by restarting Vim or by
+running [`:source
+%`](http://vimdoc.sourceforge.net/htmldoc/repeat.html#:source).
 
 Here's the full reference of what each option does:
 
@@ -174,4 +176,3 @@ functionality](https://github.com/mkropat/vim-uniformity/blob/master/autoload/un
 __uniformity.vim__ does not currently handle line-endings that are inconsistent
 *within a single file* any better than Vim does out of the box.  If there were
 interest in such functionality, I could see about building it in.
-
