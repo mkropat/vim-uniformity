@@ -93,7 +93,9 @@ let g:uniformity_fileformat = 'unix'
 ```
 
 Change each setting as desired.  You may omit any setting to have it not take
-effect.  Here's the full reference of what each option does:
+effect.
+
+Here's the full reference of what each option does:
 
 Setting                                  | Description
 -----------------------------------------|----------------------
