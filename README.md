@@ -39,7 +39,7 @@ need uniformity.vim__:
 - Do you want to change both leading and non-leading whitespace in the file?
   Try [this trick](http://stackoverflow.com/a/16892086/27581).
 
-On the other hand:
+On the other hand...
 
 Do you want to conservatively change whitespace so that only leading
 indentation is changed (to minimize the risk of messing up formatting)?
