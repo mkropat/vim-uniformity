@@ -16,6 +16,7 @@ By whitespace, I'm talking about changing indentation:
 But I'm also talking about:
 
 - Stripping traililng whitespace
+- Stripping zero-width Unicode characters
 - [Changing line
   endings](http://vimdoc.sourceforge.net/htmldoc/options.html#'fileformat')
   (Windows → *nix, *nix → Windows, etc.)[*](#inconsistent-line-endings)
@@ -87,6 +88,7 @@ Include the following lines in your
 ```viml
 let g:uniformity_indent = '    '
 let g:uniformity_strip_trailing_whitespace = 1
+let g:uniformity_strip_zerowidth_chars = 0
 let g:uniformity_bomb = 0
 let g:uniformity_fileencoding = 'utf-8'
 let g:uniformity_fileformat = 'unix'
@@ -103,6 +105,7 @@ Setting                                  | Description
 -----------------------------------------|----------------------
 `g:uniformity_indent`                    | The string that represents one level of desired indentation, such as a string that contains 2-spaces, 4-spaces, or a tab character. (To insert a tab character, you can use [this trick](http://stackoverflow.com/a/4781099/27581).)
 `g:uniformity_strip_trailing_whitespace` | If set to `1`, [trailing whitespace](http://blog.codinghorror.com/whitespace-the-silent-killer/) will be stripped
+`g:uniformity_strip_zerowidth_chars`     | If set to `1`, [zero-width Unicode characters](http://stackoverflow.com/a/11305926/27581) will be stripped
 `g:uniformity_bomb`                      | What to set [`'bomb'`](http://vimdoc.sourceforge.net/htmldoc/options.html#'bomb') to
 `g:uniformity_fileencoding`              | What to set [`'fileencoding'`](http://vimdoc.sourceforge.net/htmldoc/options.html#'fileencoding') to
 `g:uniformity_fileformat`                | What to set [`'fileformat'`](http://vimdoc.sourceforge.net/htmldoc/options.html#'fileformat') to
