@@ -11,8 +11,9 @@ function! uniformity#Uniform() abort
         call setbufvar('', '&fileformat', g:uniformity_fileformat)
     endif
 
-    let do_indent = exists('g:uniformity_indent') && strlen(g:uniformity_indent)
-    let do_trailing = exists('g:uniformity_strip_trailing_whitespace') && g:uniformity_strip_trailing_whitespace
+    let do_indent    = exists('g:uniformity_indent') && strlen(g:uniformity_indent)
+    let do_trailing  = exists('g:uniformity_strip_trailing_whitespace') && g:uniformity_strip_trailing_whitespace
+    let do_zerowidth = exists('g:uniformity_strip_zerowidth_chars') && g:uniformity_strip_zerowidth_chars
 
     for lnum in range(1, line('$'))
         let line = getline(lnum)
@@ -23,6 +24,10 @@ function! uniformity#Uniform() abort
 
         if do_trailing
             let line = s:StripTrailingWhitespace(line)
+        endif
+
+        if do_zerowidth
+            let line = s:StripZerowidthChars(line)
         endif
 
         call setline(lnum, line)
@@ -46,6 +51,10 @@ endfunction
 
 function! s:StripTrailingWhitespace(line)
     return substitute(a:line, '\s*$', '', '')
+endfunction
+
+function! s:StripZerowidthChars(line)
+    return substitute(a:line, '[​‌‍﻿]', '', 'g')
 endfunction
 
 function! s:GetWhitespaceLength(whitespace)
