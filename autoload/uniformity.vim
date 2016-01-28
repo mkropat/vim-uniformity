@@ -50,7 +50,7 @@ function! s:ReplaceLineIndent(line, buf_indent_length, target_indent)
 endfunction
 
 function! s:StripTrailingWhitespace(line)
-    return substitute(a:line, '\s*$', '', '')
+    return substitute(a:line, '\s*\r*$', '', '')
 endfunction
 
 function! s:StripZerowidthChars(line)

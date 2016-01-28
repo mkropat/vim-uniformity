@@ -19,7 +19,7 @@ But I'm also talking about:
 - Stripping zero-width Unicode characters
 - [Changing line
   endings](http://vimdoc.sourceforge.net/htmldoc/options.html#'fileformat')
-  (Windows → *nix, *nix → Windows, etc.)[*](#inconsistent-line-endings)
+  (Windows → *nix, *nix → Windows, etc.)
 - [Changing the file
   encoding](http://vimdoc.sourceforge.net/htmldoc/options.html#'fileencoding')
 - Adding or removing the [UTF
@@ -173,9 +173,3 @@ functionality](https://github.com/mkropat/vim-uniformity/blob/master/autoload/un
 - Vim has a workable, albeit clunky, means for working with all the files in a project (`:argdo`, etc.)
 - With [__sleuth.vim__](https://github.com/tpope/vim-sleuth), Vim has a tested library for auto-detecting the indentation settings of a file
 - Vim works cross-platform
-
-#### Inconsistent line endings
-
-__uniformity.vim__ does not currently handle line-endings that are inconsistent
-*within a single file* any better than Vim does out of the box.  If there were
-interest in such functionality, I could see about building it in.
